@@ -157,6 +157,11 @@ export function runAnalysisOnLine(cx, line) {
     }
 
     const options = { logValue: "dummyValue" };
+
+    //kytodo
+    if (!source.url) {
+      console.log("source url undefined 1")
+    }
     const location = {
       sourceId: source.id,
       sourceUrl: source.url,
@@ -175,6 +180,11 @@ export function addBreakpointAtLine(cx, line, shouldLog = false, disabled = fals
 
     if (!source) {
       return;
+    }
+
+    //kytodo
+    if (!source.url) {
+      console.log("source url undefined 2")
     }
     const breakpointLocation = {
       sourceId: source.id,

@@ -5,6 +5,7 @@
 import { assert } from "protocol/utils";
 import { openDocLink } from "devtools/client/shared/link";
 import { onConnect } from "devtools/client/debugger/src/client";
+import actions from "../webconsole/actions";
 
 export class DebuggerPanel {
   constructor(toolbox) {
@@ -42,8 +43,7 @@ export class DebuggerPanel {
   }
 
   async openConsoleAndEvaluate(input) {
-    const consolePanel = await this.toolbox.selectTool("console");
-    consolePanel.evaluateExpression(input);
+    this._store.dispatch(actions.evaluateExpression(input));
   }
 
   async openInspector() {
